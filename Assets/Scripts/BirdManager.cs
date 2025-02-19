@@ -7,11 +7,15 @@ public class BirdManager : MonoBehaviour
     //setting up all the sprites - these are public so I can drop things into them in the inspector
     public Sprite bluejay;
     public Sprite cardinal;
+    public Sprite dove;
+    public Sprite chickadee;
     public SpriteRenderer r;
 
     //same logic as the sprites above
     public AudioClip bluejayCall;
     public AudioClip cardinalCall;
+    public AudioClip doveCall;
+    public AudioClip chickadeeCall;
     public AudioSource a;
     
     // Start is called before the first frame update
@@ -44,6 +48,22 @@ public class BirdManager : MonoBehaviour
         r.sprite = cardinal;
         AudioSource a = GetComponent<AudioSource>();
         a.clip = cardinalCall;
+    }
+
+    public void DoveSprite()
+    {
+        SpriteRenderer r = GetComponent<SpriteRenderer>();
+        r.sprite = dove;
+        AudioSource a = GetComponent<AudioSource>();
+        a.clip = doveCall;
+    }
+
+    public void ChickadeeSprite()
+    {
+        SpriteRenderer r = GetComponent<SpriteRenderer>();
+        r.sprite = chickadee;
+        AudioSource a = GetComponent<AudioSource>();
+        a.clip = chickadeeCall;
     }
 
 }
