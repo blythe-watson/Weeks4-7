@@ -49,8 +49,9 @@ public class BirdManager : MonoBehaviour
         a.clip = bluejayCall;
         a.volume = volume;
 
-        //this changes the display text to tell us what bird we're looking at, and changes the text colour
+        //this changes the display text to tell us what bird we're looking at, and changes
         species.text = "Bluejay";
+        //this changes the colour of the text
         species.faceColor = Color.blue;
     }
 

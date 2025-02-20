@@ -5,8 +5,20 @@ using UnityEngine;
 public class SpawnNote : MonoBehaviour
 {
     public GameObject note;
-    //gonna be honest I thought that the destroy counter counted as a timer :(
-    public float duration = 5;
+
+    //measures time
+    public float t;
+    //whether the timer is counting - just made it public for testing purposes
+    public bool timerOn = false;
+
+    //the prefab being spawned
+    GameObject newNote;
+
+    
+    //this is used for making the prefabs last as long as the audio clip
+    public AudioSource chirp;
+    public float chirpLength;
+
     Vector3 pos;
 
     // Start is called before the first frame update
@@ -18,13 +30,25 @@ public class SpawnNote : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+        //this variable is the length of the current audio clip
+        chirpLength = chirp.clip.length;
+
+        //if the timer is on, t counts upwards with delta time
+        if (timerOn)
+        {
+            t += Time.deltaTime;
+        }
+
+        //if the timer has exceeded the length of the birdsong, it destroys itself, turns off the timer, and resets it to 0
+        if (t > chirp.clip.length)
+        {
+            //then destroys it
+            Destroy(newNote);
+            timerOn = false;
+            t = 0;
+        }
     }
 
-    public void Size()
-    {
-
-    }
     
     public void Note()
     {
@@ -33,11 +57,15 @@ public class SpawnNote : MonoBehaviour
         pos.y = transform.localPosition.y + Random.Range(-2, 2);
         pos.z = transform.localPosition.z + 0;
 
+        
+
         //Then it instantiates a music note in that location
-        GameObject newNote = Instantiate(note, pos, Quaternion.identity);
-        //then destroys it
-        Destroy(newNote, duration);
-    }
+        newNote = Instantiate(note, pos, Quaternion.identity);
+
+        //then it starts the destruction countdown
+        timerOn = true;
+      
+        }
 }
 
 
