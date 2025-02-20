@@ -29,7 +29,7 @@ public class SpawnNote : MonoBehaviour
         //Then it instantiates a music note in that location
         GameObject newNote = Instantiate(note, pos, Quaternion.identity);
         //then destroys it
-        Destroy(newNote, 8);
+        Destroy(newNote, 5);
     }
 }
 
