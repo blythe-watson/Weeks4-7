@@ -5,6 +5,8 @@ using UnityEngine;
 public class SpawnNote : MonoBehaviour
 {
     public GameObject note;
+    //gonna be honest I thought that the destroy counter counted as a timer :(
+    public float duration = 5;
     Vector3 pos;
 
     // Start is called before the first frame update
@@ -19,6 +21,11 @@ public class SpawnNote : MonoBehaviour
       
     }
 
+    public void Size()
+    {
+
+    }
+    
     public void Note()
     {
         //this takes the vector3 I made earlier and assigns it a random location local in screenspace to the bird
@@ -29,7 +36,7 @@ public class SpawnNote : MonoBehaviour
         //Then it instantiates a music note in that location
         GameObject newNote = Instantiate(note, pos, Quaternion.identity);
         //then destroys it
-        Destroy(newNote, 5);
+        Destroy(newNote, duration);
     }
 }
 

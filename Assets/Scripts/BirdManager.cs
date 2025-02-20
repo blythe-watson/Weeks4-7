@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class BirdManager : MonoBehaviour
 {
@@ -18,6 +20,12 @@ public class BirdManager : MonoBehaviour
     public AudioClip chickadeeCall;
     public AudioSource a;
     
+    public TextMeshProUGUI species;
+
+    //public Slider slider;
+
+    float volume;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,34 +44,55 @@ public class BirdManager : MonoBehaviour
     {
         SpriteRenderer r = GetComponent<SpriteRenderer>();
         r.sprite = bluejay;
+        
         AudioSource a = GetComponent<AudioSource>();
         a.clip = bluejayCall;
+        a.volume = volume;
+
+        //this changes the display text to tell us what bird we're looking at, and changes the text colour
+        species.text = "Bluejay";
+        species.faceColor = Color.blue;
     }
 
-
-    //same logic as the bluejay
+    //exact same logic as the bluejay
     public void CardinalSprite()
     {
         SpriteRenderer r = GetComponent<SpriteRenderer>();
         r.sprite = cardinal;
+
         AudioSource a = GetComponent<AudioSource>();
         a.clip = cardinalCall;
+        a.volume = volume;
+
+        species.text = "Cardinal";
+        species.faceColor = Color.red;
     }
 
     public void DoveSprite()
     {
         SpriteRenderer r = GetComponent<SpriteRenderer>();
         r.sprite = dove;
+
         AudioSource a = GetComponent<AudioSource>();
         a.clip = doveCall;
+        a.volume = volume;
+
+        species.text = "Mourning dove";
+        species.faceColor = Color.green;
     }
 
     public void ChickadeeSprite()
     {
         SpriteRenderer r = GetComponent<SpriteRenderer>();
         r.sprite = chickadee;
+
         AudioSource a = GetComponent<AudioSource>();
         a.clip = chickadeeCall;
+        a.volume = volume;
+
+        species.text = "Chickadee";
+        species.faceColor = Color.black;
     }
+
 
 }
